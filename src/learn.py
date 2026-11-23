@@ -57,7 +57,7 @@ def forward(X, parameters):
 def cross_entropy_loss(y_true, y_pred):
     m = len(y_true)
 
-    loss_per_example = np.sum(y_true * np.log(y_pred), axis=-1)
+    loss_per_example = np.sum(y_true * np.log(np.clip(y_pred, 1e-12, 1.0)), axis=-1)
 
     return -1 * (1/m) * np.sum(loss_per_example)
 
