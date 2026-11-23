@@ -94,7 +94,10 @@ def gradient_descent_step(X, y, parameters, learning_rate=0.01):
     return updated_parameters, loss
 
 def accuracy(y_true, y_pred):
-    pass
+    most_probable = np.argmax(y_pred, axis=-1)
+    location_truth_labels = np.argmax(y_true, axis=-1)
+
+    return np.sum(most_probable == location_truth_labels) / len(location_truth_labels)
     
     
 
