@@ -55,7 +55,11 @@ def forward(X, parameters):
 
 # Loss function
 def cross_entropy_loss(y_true, y_pred):
-    pass
+    m = len(y_true)
+
+    loss_per_example = np.sum(y_true * np.log(y_pred), axis=-1)
+
+    return -1 * (1/m) * np.sum(loss_per_example)
 
 # Backward pass
 def backward(X, y, W2, Z1, A1, A2):
