@@ -33,7 +33,7 @@ def initialize_parameters(input_size, hidden_size, output_size):
 
 # Activation functions
 def relu(Z):
-    pass
+    return np.maximum(Z, 0)
 
 def relu_derivative(Z):
     return Z > 0
