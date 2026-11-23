@@ -127,6 +127,13 @@ function loadWeightsFromServer(parameters) {
   W2 = Matrix.transpose(Matrix.fromArray2D(parameters[2]));
   b2 = Matrix.transpose(Matrix.fromArray2D(parameters[3]));
 
+//   let loadedHidden = W1.rows;
+//   if (!nn || nn.structure[1] !== loadedHidden) {
+//     hidden_size = loadedHidden;
+//     document.getElementById("hiddenSize").value = loadedHidden;
+//     nn = new NeuralNetwork([784, loadedHidden, 10]);
+//   }
+
   nn.setWeightsFromMatrix([W1, W2]);
   nn.setBiasesFromMatrix([b1, b2]);
   nn.initVisualization(380, 30, 240, 400, false)

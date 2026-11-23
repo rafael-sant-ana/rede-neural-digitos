@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.11.22)  22 NOV 2026 22:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.11.22)  22 NOV 2026 23:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -456,18 +456,47 @@ ers/rafa/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/tex-gyre/q-ts1.enc}])
 (sections/sec3_resultados.tex
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
 (Font)              scaled to size 9.0pt on input line 16.
-<figures/sweep_learning_rate.pdf, id=19, 751.10048pt x 280.6554pt>
-File: figures/sweep_learning_rate.pdf Graphic file (type pdf)
-<use figures/sweep_learning_rate.pdf>
-Package pdftex.def Info: figures/sweep_learning_rate.pdf  used on input line 38
-.
-(pdftex.def)             Requested size: 239.39438pt x 89.45183pt.
+<figures/best_model_curves.pdf, id=19, 751.1262pt x 280.57762pt>
+File: figures/best_model_curves.pdf Graphic file (type pdf)
+<use figures/best_model_curves.pdf>
+Package pdftex.def Info: figures/best_model_curves.pdf  used on input line 37.
+(pdftex.def)             Requested size: 239.39438pt x 89.42276pt.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.95pt on input line 43.
+(Font)              scaled to size 10.95pt on input line 42.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 10.95pt on input line 43.
-) (sections/sec4_discussao.tex [2 <./figures/sweep_learning_rate.pdf>]) (sectio
-ns/sec5_conclusao_ia.tex) [3] (relatorio.aux)
+(Font)              scaled to size 10.95pt on input line 42.
+) (sections/sec4_discussao.tex
+Underfull \hbox (badness 10000) in paragraph at lines 44--1
+\T1/ntxtlf/m/n/10 se os pe-sos da me-lhor con-fi-gu-ra-ção ($\OT1/cmr/m/n/10 95
+[]44%$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--1
+\T1/ntxtlf/m/n/10 de acu-rá-cia) na in-ter-face web de \T1/pcr/m/n/10 server.py
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--1
+\T1/ntxtlf/m/n/10 (\T1/pcr/m/n/10 http://localhost:5001\T1/ntxtlf/m/n/10 ), tes
+tando-se dí-gi-tos
+ []
+
+
+Underfull \hbox (badness 1082) in paragraph at lines 44--1
+\T1/ntxtlf/m/n/10 (ii) \T1/ntxtlf/b/n/10 des-lo-ca-mento es-pa-cial\T1/ntxtlf/m
+/n/10 , quando dí-gi-tos (como \T1/pcr/m/n/10 4\T1/ntxtlf/m/n/10 )
+ []
+
+
+Underfull \hbox (badness 1546) in paragraph at lines 44--1
+\T1/ntxtlf/b/n/10 es-ti-lís-ti-cas\T1/ntxtlf/m/n/10 , com di-fi-cul-dade para d
+is-tin-guir di-fe-ren-tes
+ []
+
+[2 <./figures/best_model_curves.pdf>]) (sections/sec5_conclusao_ia.tex)
+[3] (relatorio.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2020/03/25>
@@ -475,12 +504,12 @@ L3 programming layer <2020/03/25>
  ) 
 Here is how much of TeX's memory you used:
  7803 strings out of 467871
- 131954 string characters out of 5418859
- 572009 words of memory out of 5000000
+ 131940 string characters out of 5418859
+ 571020 words of memory out of 5000000
  36537 multiletter control sequences out of 15000+600000
  674524 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 89i,10n,117p,1084b,360s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,10n,117p,1392b,360s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/rafa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/c
 mbx10.pfb><C:/Users/rafa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
 nts/cm/cmex10.pfb><C:/Users/rafa/AppData/Local/Programs/MiKTeX/fonts/type1/publ
@@ -500,9 +529,9 @@ r/ucrr8a.pfb><C:/Users/rafa/AppData/Local/Programs/MiKTeX/fonts/type1/public/ne
 wtx/ztmb.pfb><C:/Users/rafa/AppData/Local/Programs/MiKTeX/fonts/type1/public/ne
 wtx/ztmr.pfb><C:/Users/rafa/AppData/Local/Programs/MiKTeX/fonts/type1/public/ne
 wtx/ztmri.pfb>
-Output written on relatorio.pdf (3 pages, 309986 bytes).
+Output written on relatorio.pdf (3 pages, 309610 bytes).
 PDF statistics:
- 145 PDF objects out of 1000 (max. 8388607)
+ 150 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

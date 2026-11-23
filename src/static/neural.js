@@ -94,20 +94,26 @@ class NeuralNetwork {
       // feedForward through all layers
       for (let i = 0; i < this.nLayers - 1; i++) {
         output_unmapped = this.feedForward(input, i + 1);
-        output = Matrix.mapArray(output_unmapped, relu);
+        if (i == this.nLayers - 2) {
+          output = this.softmaxArray(output_unmapped);
+        } else {
+          output = Matrix.mapArray(output_unmapped, relu);
+        }
         input = output;
         
         if (this.visualize) { 
-          if(i == this.nLayers - 2) {
-            this.layerOutputs[i] = this.normalizeArray(output);
-          }
-          else {
-            this.layerOutputs[i] = output;
-          }
+          this.layerOutputs[i] = output;
         }
       }
       
       return this.layerOutputs[this.layerOutputs.length-1];
+    }
+
+    softmaxArray(array) {
+      let maxVal = Math.max(...array);
+      let exps = array.map(x => Math.exp(x - maxVal));
+      let sum = exps.reduce((a, b) => a + b, 0);
+      return exps.map(x => x / sum);
     }
     
     normalizeArray(array){
