@@ -1,0 +1,25 @@
+\section{Metodologia}
+
+\noindent\textbf{Conjunto de Dados e Pré-processamento.}
+Utilizamos o conjunto de dados \texttt{mnist\_784}, obtido via \texttt{fetch\_openml}, composto por $70.000$ imagens de dígitos manuscritos ($28 \times 28$ pixels) vetorizadas em $784$ atributos. As intensidades de pixel, originalmente no intervalo $[0, 255]$, são normalizadas para $[0, 1]$ mediante divisão por $255{,}0$. Os dados são particionados na proporção 80/20 (\texttt{test\_size=0.2}, \texttt{random\_state=42}), resultando em $m = 56.000$ exemplos de treinamento e $14.000$ de teste. Os rótulos das $C = 10$ classes são convertidos para a representação \emph{one-hot} com \texttt{OneHotEncoder}, ajustado no conjunto de treino e aplicado ao de teste. Toda a lógica da rede neural e de otimização é implementada diretamente em NumPy.
+
+\noindent\textbf{Arquitetura e Inicialização.}
+Adotamos uma rede neural \emph{feedforward} totalmente conectada (MLP) de duas camadas ($784 \to h \to 10$), onde $h$ representa o número de neurônios na camada escondida (\texttt{hidden\_size}). As matrizes de pesos $W_1$, de dimensão $784 \times h$, e $W_2$, de dimensão $h \times 10$, são inicializadas a partir de $\mathcal{N}(0, 0{,}01^2)$ (\texttt{np.random.randn * 0.01}) sob semente global fixa (\texttt{np.random.seed(42)}), quebrando a simetria entre neurônios sem saturar as ativações iniciais. Os vetores de viés $b_1$ ($1 \times h$) e $b_2$ ($1 \times 10$) são inicializados com zeros.
+
+\noindent\textbf{Propagação Direta e Ativações.}
+Dado um lote de entradas $X$, a propagação direta (\emph{forward pass}) computa as pré-ativações e ativações das camadas escondida e de saída segundo:
+\begin{gather*}
+Z_1 = X W_1 + b_1, \quad A_1 = \text{ReLU}(Z_1) = \max(0, Z_1), \\
+Z_2 = A_1 W_2 + b_2, \quad A_2 = \text{softmax}(Z_2).
+\end{gather*}
+Na função \emph{softmax}, para assegurar estabilidade numérica, subtrai-se o valor máximo por amostra ($z_j - \max_k z_k$) antes da exponenciação, mantendo os argumentos não positivos e prevenindo \emph{overflow} numérico sem alterar a distribuição de probabilidades resultante.
+
+\noindent\textbf{Função de Perda, Otimização e Avaliação.}
+O treinamento minimiza a entropia cruzada multiclasse:
+\[
+L = -\frac{1}{m}\sum_{i=1}^{m}\sum_{c=1}^{C} y_{ic}\log(\hat{y}_{ic}),
+\]
+com \emph{clipping} das probabilidades preditas $\hat{y}_{ic}$ no intervalo $[10^{-12}, 1{,}0]$ antes do logaritmo para evitar $\log(0)$ e valores indefinidos. O ajuste dos parâmetros utiliza gradiente descendente em lote completo (\emph{full-batch GD}): a cada época, calculam-se os gradientes exatos por retropropagação (\texttt{backward}) sobre todos os $m = 56.000$ exemplos, empregando $dZ_2 = A_2 - Y$ na saída, $\text{ReLU}'(Z_1) = \mathbf{1}[Z_1 > 0]$ na camada escondida e normalização por $m$, atualizando cada parâmetro via $\theta \leftarrow \theta - \alpha \nabla_\theta L$. O desempenho é medido pela acurácia no conjunto de teste, comparando os índices de maior probabilidade (\texttt{argmax}) entre as saídas preditas e os rótulos \emph{one-hot}.
+
+\noindent\textbf{Protocolo Experimental.}
+Realizamos uma varredura controlada variando apenas um hiperparâmetro por vez a partir da configuração-base fixa ($\alpha = 0{,}1$, $200$ épocas e $h = 64$ neurônios escondidos, com semente \texttt{42}), totalizando dez configurações distintas nos eixos $\alpha \in \{0{,}001;\, 0{,}01;\, 0{,}1;\, 0{,}5\}$, épocas em $\{50, 100, 200, 500\}$ e $h \in \{4, 16, 64, 256\}$. Em cada execução, sob a mesma divisão treino/teste, registram-se a perda final de treinamento, a acurácia final de teste e o tempo total de execução em CPU.

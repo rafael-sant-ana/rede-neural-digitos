@@ -1,0 +1,9 @@
+\section{Conclusão}
+
+Neste trabalho, implementou-se com sucesso, do zero em NumPy, um Perceptron Multicamadas de duas camadas ($784 \to h \to 10$) para classificação de dígitos manuscritos do conjunto MNIST. A melhor configuração obtida ($\alpha = 0{,}5$, 200 épocas e $h = 64$) alcançou \textbf{92,43\%} de acurácia no conjunto de teste, com perda final de $0{,}2585$ em $280{,}6$~s, superando o critério mínimo de 90\%. Os experimentos evidenciaram a elevada sensibilidade aos hiperparâmetros --- especialmente à taxa de aprendizado no \textit{full-batch GD} ---, bem como o compromisso entre capacidade representacional e custo computacional.
+
+Como trabalhos futuros, quatro aprimoramentos são particularmente promissores: (i)~substituir o gradiente em lote completo por \textit{mini-batch SGD} com \textit{momentum} ou \textbf{Adam}, acelerando substancialmente a convergência; (ii)~adotar a \textbf{inicialização de He} ($\mathcal{N}(0, 2/n_{\text{in}})$), mais adequada à ativação ReLU para preservar a variância dos gradientes; (iii)~incorporar regularização $L_2$, \textit{Dropout} e \textit{data augmentation} (pequenas translações e rotações) para ampliar a generalização; e (iv)~explorar \textbf{Redes Neurais Convolucionais (CNNs)}, que preservam a estrutura espacial 2D das imagens e conferem invariância a translações.
+
+\section*{Declaração de Uso de IA}
+
+Declara-se o uso de ferramentas de IA generativa (assistente de código) como apoio na configuração do template \LaTeX{} AAAI-27, no desenvolvimento de scripts auxiliares para automação dos experimentos, coleta de métricas e geração de gráficos, bem como na revisão estrutural e redacional deste relatório. A implementação central da rede neural (\texttt{learn.py}), a validação experimental dos resultados e a análise crítica foram integralmente revisadas e validadas pelo autor. Os registros das conversas estão disponíveis em: [TODO: inserir links das conversas realizadas].
