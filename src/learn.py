@@ -39,7 +39,7 @@ def relu_derivative(Z):
     return Z > 0
 
 def softmax(Z):
-    exp_Z = np.exp(Z)
+    exp_Z = np.exp(Z - np.max(Z, axis=-1, keepdims=True))
     den = np.sum(exp_Z, axis=-1, keepdims=True)
     return exp_Z / den
 
