@@ -77,7 +77,21 @@ def backward(X, y, W2, Z1, A1, A2):
     return dW1, db1, dW2, db2
 
 def gradient_descent_step(X, y, parameters, learning_rate=0.01):
-    pass
+    W1, b1, W2, b2 = parameters
+    Z1, A1, _, A2 = forward(X, parameters)
+    y_pred = A2
+    loss = cross_entropy_loss(y, y_pred)
+
+    dW1, db1, dW2, db2 = backward(X, y, W2, Z1, A1, A2)
+
+    W1 = W1 - learning_rate * dW1
+    b1 = b1 - learning_rate * db1
+    W2 = W2 - learning_rate * dW2
+    b2 = b2 - learning_rate * db2
+
+    updated_parameters = (W1, b1, W2, b2)
+
+    return updated_parameters, loss
 
 def accuracy(y_true, y_pred):
     pass
