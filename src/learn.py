@@ -45,7 +45,13 @@ def softmax(Z):
 
 # Forward pass
 def forward(X, parameters):
-    pass
+    W1, b1, W2, b2 = parameters
+    Z1 = (X @ W1) + b1
+    A1 = relu(Z1)
+    Z2 = (A1 @ W2) + b2
+    A2 = softmax(Z2)
+
+    return Z1, A1, Z2, A2
 
 # Loss function
 def cross_entropy_loss(y_true, y_pred):
